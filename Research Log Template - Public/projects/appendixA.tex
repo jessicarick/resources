@@ -1,0 +1,40 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{SNAPP Workflow}
+\subsection*{example of a tutorial}
+\hrule
+This is an example of a tutorial made to share with others.
+
+My working directory, including scripts: \texttt{~/jrick/latesGBS\_2018/snapp}
+
+Starting from a VCF file of filtered SNPs (\textit{note}: SNPs should be filtered for linkage disequilibrium in some way-- I chose to just set \texttt{--thin 50000} in my vcftools specification), you can create a phylip file using Joana's \texttt{vcf2phylip.py} script. In the call for this script, \texttt{-r} indicates that you want the \textbf{r}eference included in the output; \texttt{-e} indicates that you want indels \textbf{e}xcluded.
+
+\begin{minted}{sh}
+python vcf2phylip.py -i INFILE.vcf -o OUTFILE.phy -re
+\end{minted}
+
+This can either just be called, or can be run using Chad's shell script \texttt{slurm\_convertVCF\_CDB.sh}.
+
+Next, we need to remove invariant sites from the phylip file and turn it into a nexus, which \texttt{BEAUti} requires as input. Chad has two different methods of doing this (you can ask him about that), but I couldn't get either to work so I just wrote an R script for it myself. The R package \texttt{phrynomics} seems to have some issues on Mt Moran (and even some on my own computer), so I have been running the R script \texttt{RscriptSNPs\_removeInvar.R} on the phylip file on my computer. This both removes invariant sites and converts it to a nexus.
+
+\textit{NOTE}: You'll want to make sure you have a reasonable number of taxa/individuals in your nexus file that you're using for SNAPP, as it gets unwieldy with too many. I chose to keep a "random" subset (i.e. those with the highest coverage) of a maximum of 5 individuals/taxon for each of my 5 taxa.
+
+Once you have a \texttt{NEXUS} file, you can load it into \texttt{BEAUti} to create the XML input for \texttt{SNAPP}. \texttt{BEAUti} is on Mt Moran (included in the \texttt{BEAST} module), but has a GUI, so ends up being easier to use locally instead. One thing that may make your life easier prior to loading the nexus file into \texttt{BEAUti} is if you edit your individual IDs to include "\_species" at the end of the name (or somehow include taxa IDs in the names; e.g. I added "\_Lmar", etc. at the end of my individual IDs). You can set the priors for all of the different parameters in \texttt{BEAUti} -- I'd recommend chatting with Chad on how to figure out what to set these to, if you're unsure. I've been starting with 3 million steps for the MCMC chain, storing every 3000 steps.
+
+Once I have the XML file from \texttt{BEAUti}, I copy it to Mt Moran, and then use \texttt{run\_snapp.sh} to run \texttt{SNAPP} on the cluster. The general command is:
+
+\begin{minted}{sh}
+module load oraclejdk
+module load beast
+
+beast -prefix RUN_NAME -threads 8 -seed 12345 -instances 8 INFILE.xml
+\end{minted}
+
+For some reason, the output folder (named \texttt{RUN\_NAME}) has to be created before it will let you start the run. In this command, \texttt{threads} and \texttt{instances} need to both be equal to the number available in your SLURM request. In the script, I set the seed randomly by using the computer clock to make sure that I don't accidentally start multiple replicate runs with the same seed.
+
+\textit{BONUS}: if you want to check whether your data are overcoming your priors, you can start a run that samples only from the prior by adding \texttt{sampleFromPrior="true"} to your MCMC specification:
+
+\begin{minted}{xml}
+<run id="mcmc" spec="MCMC" 
+	chainLength="5000000" preBurnin="5000" storeEvery="1000" 
+    sampleFromPrior="true">
+\end{minted}

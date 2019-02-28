@@ -1,0 +1,43 @@
+%%% Research Diary
+%%% Template by Mikhail Klassen, April 2013
+%%%  Modified by Jessi Rick, Feb 2018
+
+\documentclass[11pt,letterpaper]{article}
+
+\newcommand{\workingDate}{\textsc{2018 $|$ February}}
+\newcommand{\userName}{Name}
+\newcommand{\institution}{}
+\usepackage{researchdiary_png}
+
+% To add your university logo to the upper right, simply
+% upload a file named "logo.png" using the files menu above.
+
+\begin{document}
+
+\title{\Huge Research Log}
+\author{Your Name Here}
+\maketitle
+ 
+\tableofcontents
+
+\pagebreak
+
+%%%% Include the logs for separate projects here %%
+
+\include{projects/genome_assembly}
+\include{projects/gbs_analyses}
+\include{projects/phylogenetic_analyses}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX SECTION %%
+%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\begin{appendices}
+\input{projects/appendixA.tex}
+%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\input{projects/appendixB.tex}
+\end{appendices}
+
+
+\end{document}
