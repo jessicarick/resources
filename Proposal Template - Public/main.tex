@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Proposal Template created by Jessi Rick (jrick@uwyo.edu), Fall 2018 %%
+%% Designed based on EG Mandeville's Dissertation Proposal %%%%%%%%%%%%%%
+%% This is simply a recommendation to get you started-- feel free to %%%%
+%% modify to whatever works best for you (and your advisor)! %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% Preamble of the document begins here %%%%%%
+% mention the type of document, here we are using an article
+\documentclass[letterpaper,12pt]{article}
+
+% load the packages that we shall use for building the document
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{subcaption}
+\usepackage[margin=1in]{geometry} %% sets 1" margins
+%\renewcommand{\baselinestretch}{1.5} %% this sets to 1.5 spacing
+%\usepackage{setspace} %% these two set double spacing
+%\doublespacing %% goes with previous
+
+\bibpunct{(}{)}{;}{a}{}{,}  % this is a citation format command for natbib
+
+% for fancy headers (testing)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage[font={small,sf},format=plain,labelfont={bf,up}]{caption}
+\fancyhf{}
+\fancyhead[l,lo]{YOUR NAME \textit{Dissertation Proposal}}
+\fancyhead[r,ro]{\thepage}
+
+% this package is for tables
+\usepackage{booktabs}
+% write the title and author here
+% You must supply your own values
+\title{Title of this proposal: Lots of work ahead}
+\author{Your Name}
+\date{Version: \today}
+
+%%%%% Preamble to the document ends here %%%%%%
+
+\begin{document}
+\maketitle
+
+% next we include the different sections. 
+% Each section is included in the document
+\input{sections/1-overview.tex}
+\input{sections/2-justification.tex}
+\input{sections/3-background.tex}
+\input{sections/4-researchplans.tex}
+\input{sections/5-workinprogress.tex}
+\input{sections/6-goals.tex}
+\input{sections/7-timeline.tex}
+
+% special sections for tables and figures
+% then go after the main text of the article
+% you can also copy paste from these sections and codes there
+%\include{tables}
+%\include{figures}
+
+% This part is for including references and citations
+% you can change the bibliography style to whatever you'd like
+\bibliographystyle{sysbio}
+
+%% change to your own bibliography!
+\bibliography{example}
+
+% The document must end with this code
+\end{document}
