@@ -1,0 +1,66 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template created by Jessi Rick (jrick@uwyo.edu), Fall 2018 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% Preamble of the document begins here %%%%%%
+\documentclass[letterpaper,12pt]{article}
+
+% load the packages that we use for building the document
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption} % allows two captions for two-part figures
+\usepackage[margin=1in]{geometry} %% sets 1" margins
+%\renewcommand{\baselinestretch}{1.5} %% this sets to 1.5 spacing
+%\usepackage{setspace} %% these two set double spacing
+%\doublespacing %% goes with previous
+\usepackage{booktabs} % for making tables look nice
+\usepackage{latex-rmd} % a custom package for making R Markdown files look nice
+
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}  % citation format command for natbib
+
+% for fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage[font={small,sf},format=plain,labelfont={bf,up}]{caption}
+\fancyhf{}
+\fancyhead[l,lo]{Name \textit{Short Title}}
+\fancyhead[r,ro]{\thepage}
+
+% write the title and author here
+% You must supply your own values
+\title{Title of this Work}
+\author{Author Name(s)}
+\date{Version: \today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Preamble to the document ends here %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+% next we include the different sections. 
+% Each section is included in the document
+\input{Sections/0-abstract.tex}
+\input{Sections/1-introduction.tex}
+\input{Sections/2-methods.tex}
+\input{Sections/3-results.tex}
+\input{Sections/4-discussion.tex}
+
+% This part is for including references and citations
+% you can change the bibliography style to whatever you'd like
+\bibliographystyle{sysbio} % change to the citation format you want
+\bibliography{bibliography} % change to the name of your .bib file
+
+% individual sections for tables and figures if you don't want them embedded in-text
+\input{Sections/5-tables.tex}
+\input{Sections/6-figures.tex}
+
+%% add a supplement if desired, e.g. to include supplemental figures/text, or to include code from analyses
+\input{Sections/7-supplement.tex}
+
+% The document must end with this code
+\end{document}
