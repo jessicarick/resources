@@ -1,0 +1,86 @@
+%!TEX encoding = UTF-8 Unicode
+% CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded and modified from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Modified (March 2019) by:
+% Jessica A. Rick <jrick@uwyo.edu>
+% http://www.jessicarick.com
+% 
+%
+
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, letterpaper, draft]{academic-cv}
+
+% Configure page margins with geometry
+\geometry{left=0.75in, top=0.75in, right=0.75in, bottom=0.75in, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+\name{Your Name}{}
+\position{PhD Student{\enskip\cdotp\enskip}Program}
+\address{University of Wyoming, 1000 E University Ave, Laramie, WY 82070}
+
+%\mobile{+1 000-000-0000}
+\email{email@email.com}
+\homepage{www.mywebsite.com}
+\github{mygithub}
+%\linkedin{mylinkedin}
+% \gitlab{my-gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+ \twitter{@twitterhandle}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \extrainfo{extra informations}
+
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal information
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {March 2019}
+  {Name ~~~·~~~ Curriculum Vitae}
+  {\thepage}
+
+
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%   Comment out any sections that are not appropriate for your CV
+%-------------------------------------------------------------------------------
+\input{cv/education.tex}
+\input{cv/professional.tex}
+\input{cv/publications.tex}
+\input{cv/honors.tex}
+\input{cv/presentation.tex}
+\input{cv/teaching.tex}
+\input{cv/mentoring.tex}
+%\input{cv/research.tex}
+\input{cv/extracurricular.tex}
+
+%-------------------------------------------------------------------------------
+\end{document}
